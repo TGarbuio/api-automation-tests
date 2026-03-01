@@ -31,30 +31,29 @@ pipeline {
         script {
           int status = sh(script: 'npm run test:api', returnStatus: true)
           if (status != 0) {
-        currentBuild.result = 'UNSTABLE'
-        echo "Newman failed (exit code ${status}). Marking build as UNSTABLE."
-      }
-    }
-  }
-        post {
-          always {
-            archiveArtifacts artifacts: 'allure-results/**,html-report/**', allowEmptyArchive: true
+            currentBuild.result = 'UNSTABLE'
+            echo "Newman failed (exit code ${status}). Marking build as UNSTABLE."
           }
         }
-}
+      }
+      post {
+        always {
+          archiveArtifacts artifacts: 'allure-results/**,html-report/**', allowEmptyArchive: true
+        }
+      }
     }
 
     stage('Allure Report') {
-       when {
+      when {
         expression { fileExists('allure-results') }
-        }
+      }
       steps {
-      allure([
-        includeProperties: false,
-        jdk: '',
-        results: [[path: 'allure-results']]
-    ])
-  }
-}
+        allure([
+          includeProperties: false,
+          jdk: '',
+          results: [[path: 'allure-results']]
+        ])
+      }
+    }
   }
 }
