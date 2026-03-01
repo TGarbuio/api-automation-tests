@@ -21,7 +21,7 @@ pipeline {
         sh 'node --version'
         sh 'npm --version'
         // Recomendado para CI (usa package-lock.json)
-        sh 'npm ci'
+        sh 'npm ci --legacy-peer-deps'
       }
     }
 
