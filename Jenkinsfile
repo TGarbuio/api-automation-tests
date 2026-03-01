@@ -14,21 +14,20 @@ pipeline {
 
     stage('Install dependencies') {
       steps {
-        bat 'node --version'
-        bat 'npm --version'
+        sh 'node --version'
+        sh 'npm --version'
         // Recomendado para CI (usa package-lock.json)
-        bat 'npm ci'
+        sh 'npm ci'
       }
     }
 
     stage('Run API tests (Newman)') {
       steps {
         // limpar resultados anteriores (se existirem)
-        bat 'if exist allure-results rmdir /s /q allure-results'
-        bat 'if exist html-report rmdir /s /q html-report'
+        sh 'rm -rf allure-results html-report'
 
         // roda a collection e gera allure-results/ e html-report/
-        bat 'npm run test:api'
+        sh 'npm run test:api'
       }
       post {
         always {
