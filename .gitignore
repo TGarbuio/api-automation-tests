@@ -1,0 +1,11 @@
+# Node dependencies
+node_modules/
+
+# Allure generated reports
+allure-report/
+allure-results/
+html-report/
+
+# Postman collections and environments are committed to version control
+# (uncomment line below if you want to exclude them)
+# postman/

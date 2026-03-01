@@ -1,0 +1,10 @@
+{
+  "scripts": {
+    "test:api": "newman run postman/ServeRest.postman_collection.json -e postman/Users.postman_environment.json --delay-request 700 --bail --reporters cli,allure,html --reporter-allure-export allure-results --reporter-html-export html-report/index.html"
+  },
+  "devDependencies": {
+    "newman": "^6.2.2",
+    "newman-reporter-allure": "^1.0.7",
+    "newman-reporter-html": "^1.0.5"
+  }
+}
