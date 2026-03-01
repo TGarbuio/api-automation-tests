@@ -1,8 +1,13 @@
-# Postman Collection - Best Practices & Modularization Guide
+# Projeto de Automação de AP
+
+## api-automation-tests
+Projeto de automação de testes de API desenvolvido para o processo seletivo de QA Sênior do Banco Carrefour, com foco em cobertura completa dos endpoints, validação de contratos, cenários de sucesso e erro, integração em pipeline de CI e geração de relatórios com os resultados dos testes.
+
 
 ## Overview
 Esta coleção ServeRest foi criada para testes de API com relatórios Allure + HTML. 
 Este guia descreve as estratégias de organização implementadas e como mantê-las.
+
 
 ---
 
