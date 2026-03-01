@@ -14,6 +14,57 @@
           "name": "Realizar login",
           "event": [
             {
+              "listen": "prerequest",
+              "script": {
+                "exec": [
+                  "// Cria usuário admin dinamicamente se não existir",
+                  "const adminEmail = pm.environment.get(\"adminEmail\");",
+                  "",
+                  "if (!adminEmail || adminEmail === \"\") {",
+                  "  const ts = Date.now();",
+                  "  const newEmail = `admin.${ts}@teste.com`;",
+                  "  const newPassword = `Admin@${ts}`;",
+                  "  ",
+                  "  pm.environment.set(\"adminEmail\", newEmail);",
+                  "  pm.environment.set(\"adminPassword\", newPassword);",
+                  "  ",
+                  "  // Cria usuário admin",
+                  "  const createUserRequest = {",
+                  "    url: `${pm.environment.get(\"baseUrl\")}/usuarios`,",
+                  "    method: 'POST',",
+                  "    header: {",
+                  "      'Content-Type': 'application/json',",
+                  "      'Accept': 'application/json'",
+                  "    },",
+                  "    body: {",
+                  "      mode: 'raw',",
+                  "      raw: JSON.stringify({",
+                  "        nome: \"QA Admin User\",",
+                  "        email: newEmail,",
+                  "        password: newPassword,",
+                  "        administrador: \"true\"",
+                  "      })",
+                  "    }",
+                  "  };",
+                  "  ",
+                  "  pm.sendRequest(createUserRequest, (err, res) => {",
+                  "    if (err) {",
+                  "      console.error('Erro ao criar admin:', err);",
+                  "    } else {",
+                  "      console.log(`Admin criado: ${newEmail}`);",
+                  "      if (res.json()._id) {",
+                  "        pm.environment.set(\"adminUserId\", res.json()._id);",
+                  "      }",
+                  "    }",
+                  "  });",
+                  "}"
+                ],
+                "type": "text/javascript",
+                "packages": {},
+                "requests": {}
+              }
+            },
+            {
               "listen": "test",
               "script": {
                 "exec": [
@@ -2622,11 +2673,11 @@
           "listen": "prerequest",
           "script": {
             "exec": [
-              "const ts = Date.now();\r",
-              "pm.environment.set(\"adminEmail\", `admin.${ts}@teste.com`);\r",
-              "pm.environment.set(\"adminPassword\", \"Admin@12345\");\r",
-              "\r",
-              "// garante que não vai depender de token\r",
+              "const ts = Date.now();",
+              "pm.environment.set(\"adminEmail\", `admin.${ts}@teste.com`);",
+              "pm.environment.set(\"adminPassword\", `Admin@${ts}`);",
+              "",
+              "// garante que não vai depender de token",
               "pm.request.headers.remove(\"Authorization\");"
             ],
             "type": "text/javascript",
