@@ -27,28 +27,34 @@ pipeline {
 
     stage('Run API tests (Newman)') {
       steps {
-        // limpar resultados anteriores (se existirem)
         sh 'rm -rf allure-results html-report'
-
-        // roda a collection e gera allure-results/ e html-report/
-        sh 'npm run test:api'
+        script {
+          int status = sh(script: 'npm run test:api', returnStatus: true)
+          if (status != 0) {
+        currentBuild.result = 'UNSTABLE'
+        echo "Newman failed (exit code ${status}). Marking build as UNSTABLE."
       }
-      post {
-        always {
-          archiveArtifacts artifacts: 'allure-results/**,html-report/**', allowEmptyArchive: true
+    }
+  }
+        post {
+          always {
+            archiveArtifacts artifacts: 'allure-results/**,html-report/**', allowEmptyArchive: true
+          }
         }
-      }
+}
     }
 
     stage('Allure Report') {
+       when {
+        expression { fileExists('allure-results') }
+        }
       steps {
-        // Publica o relatório no Jenkins (requer plugin Allure + tool configurada)
-        allure([
-          includeProperties: false,
-          jdk: '',
-          results: [[path: 'allure-results']]
-        ])
-      }
-    }
+      allure([
+        includeProperties: false,
+        jdk: '',
+        results: [[path: 'allure-results']]
+    ])
+  }
+}
   }
 }
