@@ -9,8 +9,54 @@
 
 ---
 
+## ⚡ Quick Start
+
+### 🖥️ Executar Localmente
+
+```bash
+# 1. Clone o repositório
+git clone https://github.com/TGarbuio/api-automation-tests.git
+cd api-automation-tests
+
+# 2. Instale as dependências
+npm ci
+
+# 3. Execute os testes
+npm run test:api
+
+# 4. Visualize os relatórios gerados
+# HTML Report: abra html-report/index.html no navegador
+# Allure Report: allure serve allure-results
+```
+
+**Resultado esperado:**
+- ✅ 23 requests executados
+- ✅ 70/70 assertions passaram
+- ✅ Relatórios HTML e Allure gerados
+
+### 🔄 Pipeline Jenkins
+
+```groovy
+1. Crie um Pipeline job no Jenkins
+2. Configure SCM:
+   - Repository URL: https://github.com/TGarbuio/api-automation-tests.git
+   - Branch: main
+   - Script Path: Jenkinsfile
+3. Clique em "Build Now"
+4. Acesse "Allure Report" no build para visualizar resultados
+```
+
+**Pipeline stages:**
+- ✅ Checkout do repositório
+- ✅ Instalação de dependências (npm ci)
+- ✅ Execução dos testes (Newman)
+- ✅ Publicação do Allure Report
+
+---
+
 ## 📋 Índice
 
+- [Quick Start](#-quick-start)
 - [Visão Geral](#-visão-geral)
 - [Arquitetura e Decisões Técnicas](#-arquitetura-e-decisões-técnicas)
 - [Cobertura de Testes](#-cobertura-de-testes)
