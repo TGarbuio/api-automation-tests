@@ -310,6 +310,7 @@ pipeline {
 4. **Executar Build:**
    - Build Now
    - Relatórios disponíveis em: `Build #N → Allure Report`
+<img width="1919" height="1079" alt="image" src="https://github.com/user-attachments/assets/a1e0b8f5-af49-44ea-8657-a7a21823100b" />
 
 ### Estratégia de Falhas
 ```groovy
