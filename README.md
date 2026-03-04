@@ -1,4 +1,4 @@
-# 🚀 API Automation Tests - ServeRest
+[Users.postman_environment.json](https://github.com/user-attachments/files/25731633/Users.postman_environment.json)# 🚀 API Automation Tests - ServeRest
 
 ![Node Version](https://img.shields.io/badge/node-18.x-brightgreen)
 ![Newman](https://img.shields.io/badge/newman-6.2.2-blue)
@@ -92,6 +92,68 @@ Este projeto implementa automação de testes de API end-to-end para a API **Ser
 - **Postman** permite modelagem visual de requests e debugging rápido
 - **Newman** executa collections headless no CI/CD
 - **Allure Reporter** gera relatórios ricos com histórico de execuções
+
+## 🏗️ Collection Postman utilizada
+[Uploading ServeRest.postman_collection.json…]()
+[Uploading Us{
+	"id": "abb06f10-056b-4a3b-8a27-557057f5b34e",
+	"name": "Users",
+	"values": [
+		{
+			"key": "userId",
+			"value": "",
+			"type": "default",
+			"enabled": true
+		},
+		{
+			"key": "baseUrl",
+			"value": "",
+			"type": "default",
+			"enabled": true
+		},
+		{
+			"key": "adminEmail",
+			"value": "",
+			"type": "default",
+			"enabled": true
+		},
+		{
+			"key": "adminPassword",
+			"value": "",
+			"type": "default",
+			"enabled": true
+		},
+		{
+			"key": "token",
+			"value": "",
+			"type": "default",
+			"enabled": true
+		},
+		{
+			"key": "adminUserId",
+			"value": "",
+			"type": "default",
+			"enabled": true
+		},
+		{
+			"key": "newUserEmail",
+			"value": "",
+			"type": "default",
+			"enabled": true
+		},
+		{
+			"key": "newUserPassword",
+			"value": "",
+			"type": "default",
+			"enabled": true
+		}
+	],
+	"color": null,
+	"_postman_variable_scope": "environment",
+	"_postman_exported_at": "2026-03-04T03:29:34.408Z",
+	"_postman_exported_using": "Postman/11.87.1"
+}ers.postman_environment.json…]()
+
 
 ### Estrutura de 3 Níveis
 ```
