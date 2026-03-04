@@ -5,7 +5,7 @@
 ![License](https://img.shields.io/badge/license-MIT-green)
 ![CI Status](https://img.shields.io/badge/build-passing-success)
 
-> **Projeto de automação de testes de API desenvolvido para o processo seletivo de QA Sênior do Banco Carrefour**, demonstrando práticas avançadas de teste, CI/CD, e geração de relatórios profissionais.
+> **Projeto de automação de testes de API**, demonstrando práticas avançadas de teste, CI/CD, e geração de relatórios profissionais.
 
 ---
 
